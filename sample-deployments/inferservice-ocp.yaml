@@ -7,7 +7,6 @@ metadata:
     serving.kserve.io/deploymentMode: RawDeployment
     sidecar.istio.io/inject: 'true'
     sidecar.istio.io/rewriteAppHTTPProbers: 'true'
-  resourceVersion: '500218352'
   name: vllm-mistral-model
   namespace: vllm-service
   labels:
