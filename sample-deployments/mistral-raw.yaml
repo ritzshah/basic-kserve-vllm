@@ -77,7 +77,7 @@ spec:
           nvidia.com/gpu: '1'
       runtime: llm
       storage:
-        key: aws-connection-minio
+        key: aws-connection-minio-s3-storage
         path: models/Mistral-7B-Instruct-v0.2/
     tolerations:
       - effect: NoSchedule
