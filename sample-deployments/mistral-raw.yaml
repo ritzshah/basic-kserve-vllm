@@ -68,11 +68,11 @@ spec:
       name: ''
       resources:
         limits:
-          cpu: '8'
+          cpu: '10'
           memory: 24Gi
           nvidia.com/gpu: '1'
         requests:
-          cpu: 200m
+          cpu: '6'
           memory: 16Gi
           nvidia.com/gpu: '1'
       runtime: llm
