@@ -23,6 +23,7 @@ spec:
         - '--served-model-name={{.Name}}'
         - '--distributed-executor-backend=mp'
         - '--max-model-len=15344'
+        - '--dtype=half'
       command:
         - python
         - '-m'
@@ -76,7 +77,7 @@ spec:
           nvidia.com/gpu: '1'
       runtime: llm
       storage:
-        key: aws-connection-my-storage
+        key: aws-connection-minio
         path: models/Mistral-7B-Instruct-v0.2/
     tolerations:
       - effect: NoSchedule
