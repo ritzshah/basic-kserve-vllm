@@ -1,0 +1,39 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  annotations:
+    openshift.io/display-name: vllm-mistral-model
+    serving.knative.openshift.io/enablePassthrough: 'true'
+    serving.kserve.io/deploymentMode: RawDeployment
+    sidecar.istio.io/inject: 'true'
+    sidecar.istio.io/rewriteAppHTTPProbers: 'true'
+  resourceVersion: '500218352'
+  name: vllm-mistral-model
+  namespace: vllm-service
+  labels:
+    opendatahub.io/dashboard: 'true'
+spec:
+  predictor:
+    maxReplicas: 1
+    minReplicas: 1
+    model:
+      modelFormat:
+        name: vLLM
+      name: ''
+      resources:
+        limits:
+          cpu: '10'
+          memory: 20Gi
+          nvidia.com/gpu: '1'
+        requests:
+          cpu: '6'
+          memory: 16Gi
+          nvidia.com/gpu: '1'
+      runtime: vllm-mistral-model
+      storage:
+        key: aws-connection-minio-s3-storage
+        path: models/Mistral-7B-Instruct-v0.2/
+    tolerations:
+      - effect: NoSchedule
+        key: nvidia.com/gpu
+        operator: Exists
